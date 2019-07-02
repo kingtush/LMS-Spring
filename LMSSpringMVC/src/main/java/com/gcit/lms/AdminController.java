@@ -1,5 +1,6 @@
 package com.gcit.lms;
 
+import java.sql.SQLException;
 import java.util.Locale;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,7 +21,7 @@ public class AdminController {
 	AdminService adminService;
 	
 	@RequestMapping(value = "/admin", method = RequestMethod.GET)
-	public String lmsHome(Locale locale, Model model) {
+	public String lmsHome(Locale locale, Model model) throws ClassNotFoundException, SQLException {
 		model.addAttribute("sizeofauthors", adminService.readAllAuthors().size());
 		return "lmsadmin";
 	}
